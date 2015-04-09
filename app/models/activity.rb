@@ -41,7 +41,6 @@ class Activity < ActiveRecord::Base
   def upcoming_due_dates
     start_date = self.created_at.to_date
     upcoming = []
-
     while start_date < self.goal.due_date
       if (self.goal.due_date - start_date).to_i >= self.days_in_period
        new_due_date = start_date + 1.send(self.period)
@@ -55,6 +54,10 @@ class Activity < ActiveRecord::Base
     upcoming.delete(upcoming[0]) if Time.now.to_date > upcoming[0]
     upcoming
   end
+
+  # def past_due_date?
+  #   Time.now.to_date > upcoming_due_dates.first
+  # end
 
   def add_point_and_decrement_occurences
     @user = self.user

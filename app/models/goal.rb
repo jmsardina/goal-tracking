@@ -10,4 +10,9 @@ class Goal < ActiveRecord::Base
     (self.due_date - Time.now.to_date).to_i
   end
 
+  def past_due?
+  	Time.now.to_date > self.due_date
+  end
+
+
 end

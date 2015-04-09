@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150409175002) do
     t.string   "facilitator"
     t.integer  "frequency"
     t.integer  "occurences",           default: 0
+    t.boolean  "rendering",            default: true
     t.integer  "activity_points",      default: 0
     t.integer  "remaining_for_period"
   end
