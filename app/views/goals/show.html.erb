@@ -1,5 +1,6 @@
 <header id="header">
   <h1><%= @goal.name %></h1>
+  <h3><%= @goal.days_left%> DAYS LEFT TO COMPLETE THIS GOAL!</h3>
   <h4><%= @goal.description %></h4>
 <!-- <div class="activities-form"> -->
   <!-- <h4>What's the next step in your goal?</h4> -->
@@ -19,8 +20,6 @@
 </section>
   
 </header>
-
-<%= @goal.user.points %>
 
 <%= link_to "Back", goals_path %>
 <%= link_to "Edit", edit_goal_path(@goal) %>

@@ -4,6 +4,9 @@
       <tr>
         <td><%= f.check_box :status, class: "toggle" %></td>
         <td><label><%= activity.description %></label></td>
+        <td class="earliest-due-date"><strong>To complete by</strong><%= activity.upcoming_due_dates.first%></td>
+        <td class="frequency"><strong>Points for this activity:</strong><%= activity.activity_points %></td>
+        <td class ="counter"><strong>Left:</strong> <%= activity.remaining_for_period %></td>
         <td><button class="destroy"></button></td>
       </tr>
     <% end %>

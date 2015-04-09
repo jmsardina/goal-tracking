@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409144318) do
+ActiveRecord::Schema.define(version: 20150409175002) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "description"
     t.integer  "goal_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "period"
-    t.boolean  "status",          default: false
+    t.boolean  "status",               default: false
     t.string   "barrier"
     t.string   "facilitator"
     t.integer  "frequency"
-    t.integer  "occurences",      default: 0
-    t.boolean  "rendering",       default: true
-    t.integer  "activity_points", default: 0
+    t.integer  "occurences",           default: 0
+    t.integer  "activity_points",      default: 0
+    t.integer  "remaining_for_period"
   end
 
   create_table "comments", force: :cascade do |t|

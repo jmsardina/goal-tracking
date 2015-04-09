@@ -14,6 +14,7 @@ class ActivitiesController < ApplicationController
 		@activity.goal = @goal
 		@activity.save ? (redirect_to goal_path(@goal)) : (render :new)
 		@activity.occurences = @activity.number_occurences
+		@activity.remaining_for_period = @activity.frequency
 		@activity.save
 	end
 
