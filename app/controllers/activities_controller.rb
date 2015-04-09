@@ -35,7 +35,6 @@ class ActivitiesController < ApplicationController
 	end
 
 	def destroy
-		binding.pry
 		set_activity.destroy
 		render nothing: :true, status: :ok
 	end

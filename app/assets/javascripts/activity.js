@@ -95,17 +95,11 @@ function addActivityListener(){
     });
 }
 
-// function cancelActivityListener(){
-//   $("#show-activity-form").click(function(){
-//     $("form").hide();
-//   });
-// }
-
 function deleteActivity(e){
   e.preventDefault();
   var $li = $(this).parents("li");
   var href = $("form", $li).attr("action");
- debugger
+ // debugger
   $.ajax(href, {
     "method": "DELETE",
     "success": function(){
