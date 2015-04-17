@@ -1,20 +1,17 @@
-<%= li_for_activity(activity) do %>
-  <div class="view">
-    <%= form_for([@goal, activity]) do |f| %>
-      <tr>
-        <td><%= f.check_box :status, class: "toggle" %></td>
-        <td><label><%=f.label :description, activity.description %></label>
-        <span class="act-frequency"><%= activity.frequency%></span>
-         times per 
-         <span class="act-period"><%= activity.period%></span><!-- | --><%#= activity.barrier%><%#= activity.facilitator %></td>
-      </tr><br>
-      <tr>
-        <td class="earliest-due-date"><strong>To complete by </strong><%= activity.upcoming_due_dates.first%></td>
-        <td class="frequency"><strong>Points for this activity:</strong><%= activity.activity_points %></td>
-        <td class ="counter"><strong>Left:</strong> <%= activity.remaining_for_period %></td>
-        <td><button class="destroy"></button></td>
+<%= tr_for_activity(activity) do %>
+  <%= form_for([@goal, activity]) do |f| %>
+    <td><%= f.check_box :status, class: "toggle" %></td>
+    <td><%=f.label :description, activity.description %></td>
+  <% end %>
+  <td><%= activity.barrier %></td>
+  <td><%= activity.facilitator %></td>
+  <td><span class="act-frequency"><%= activity.frequency%></span></td> 
+  <td><span class="act-period"><%= activity.period%></span></td>
+  <td class="frequency"><%= activity.activity_points %></td>
+  <td class ="counter"><%= activity.remaining_for_period %></td>
+  <td class="earliest-due-date"><%= activity.upcoming_due_dates.first%></td>
+  <td><button class="destroy"></button></td>
       </tr>
-    <% end %>
     <tr class="activity-li-attributes">
      <!--  <td><%#= activity.period %></td>
       <td><%#= activity.facilitator %></td>

@@ -105,11 +105,12 @@
                 <%= f.text_area :support, placeholder: "Who or what will help you in meeting your goal?", class: "form-control auto-size", style: "overflow: hidden; word-wrap: break-word; height:32px;" %>
               </p>
             </div>
+            <%= f.submit nil, class: 'goal-submit btn btn-primary col-md-4 col-md-offset-4' %>
           </div>
         </div>
+
       </div> <!-- Describe Goal Supports End -->
     </div><!-- Form Group End -->
-    <%= f.submit %>
     <% end %> <!-- Form Helper End -->
 
   </section> <!-- Content End -->

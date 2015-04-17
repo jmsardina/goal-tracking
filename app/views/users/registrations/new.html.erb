@@ -1,40 +1,45 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :name, "Username" %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div><br>
-
-  <div class="field">
-    <%= f.label :avatar, "Profile Picture" %>
-    <%#= form_for @user, :url => users_path, :html => { :multipart => true } do |form| %>
-    <%= f.file_field :avatar %>
-    <%# end %>
-  </div><br>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email%>
+<div class="card col-md-6 col-md-offset-3">
+  <div class="card-header">
+    <h2>Sign up</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <div class="card-body card-padding">
+      <div class="form-group fg-line">
+        <%= f.label :name, "Username" %>
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+      <div class="form-group fg-line">
+        <%= f.label :avatar, "Profile Picture" %>
+        <%= f.file_field :avatar %>
+      </div>
+
+      <div class="form-group fg-line">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group fg-line">
+        <%= f.label :password %>
+        <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="form-group fg-line">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-primary btn-sm m-t-1" %>
+      </div>
+
+
   </div>
 <% end %>
 

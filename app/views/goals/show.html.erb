@@ -1,27 +1,57 @@
-<% if @goal.user == current_user %>
-  <header id="header">
-    <h1><%= @goal.name %></h1>
-    <strong>Tags:</strong>
-    <% @tags.each do |tag|%>
-      <%= tag.name %>
-    <% end %>
-
-    <h3><%= @goal.days_left%> DAYS LEFT TO COMPLETE THIS GOAL!</h3>
-    <h4><%= @goal.description %></h4>
-
-    <button id="show-activity-form">Add Activity</button>
-    <%= render 'activities/form' %>
-
-  </header>
-  <h3>Things I have to do to achieve this goal:</h3>
-  <section id="main">
-    <ul id="activities-list" data-actvity-id="<%= @goal.id %>" class="list">
-      <%= render @activities %>
-    </ul>
-  </section>
-    
-  </header>
-
+<section id="content">
   <%= link_to "Back", goals_path %>
   <%= link_to "Edit", edit_goal_path(@goal) %>
-<% end %>
+
+  <div class="block-header">
+    <% if @goal.user == current_user %>
+     <!--  <header id="header"> -->
+      <h2>
+        <%= @goal.name %>
+        <strong>Tags:</strong>
+        <% @tags.each do |tag|%>
+          <%= tag.name %>
+        <% end %>
+        <small><%= @goal.days_left%> DAYS LEFT TO COMPLETE THIS GOAL!</small>
+      </h2>
+        <h4><%= @goal.description %></h4>
+
+        <button id="show-activity-form">Add Activity</button>
+        <%= render 'activities/form' %>
+  </div>
+
+      </header>
+    <div class="card">
+      <div class="card-header">
+        <h2>
+          Things to do <small><em>We know you can do this!</em></small>
+        </h2>
+      </div>
+
+      <div class="card-body table-responsive">
+       <!--  <ul id="activities-list" data-actvity-id="<%#= @goal.id %>" class="list"> -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Description</th>
+              <th>Barrier</th>
+              <th>Facilitator</th>
+              <th>Frequency</th>
+              <th>Period</th>
+              <th>Points</th>
+              <th>Remaining for Period</th>
+              <th>Due By</th>
+            </tr>
+          </thead>
+
+          <tbody style="overflow=scroll;">
+            <%= render @activities %>
+          </tbody>
+        </table>
+        <!-- </ul> -->
+      
+      </div>
+    </div>
+    <% end %>
+</section>
+
