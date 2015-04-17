@@ -25,7 +25,6 @@ class ApplicationController < ActionController::Base
 
     def track_feed(trackable, action = params[:action])
       current_user.feeds.create! action: action, trackable: trackable
-      # binding.pry
     end
 
 	  def configure_permitted_parameters

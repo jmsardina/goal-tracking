@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+	before_action :authenticate_user!
 
 	def index
 		if current_user
@@ -9,6 +10,7 @@ class GoalsController < ApplicationController
 			@user_group = UserGroup.new
 		else
 			@goals = Goal.all
+			redirect_to '/welcome/index'
 		end
 	end
 

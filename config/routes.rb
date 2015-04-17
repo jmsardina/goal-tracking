@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root to: 'goals#index'
   resources :invitations
 
+  get 'welcome/index' => 'welcome#index'
+
   resources :goals do
     # resources :comments
     resources :activities
