@@ -16,8 +16,8 @@
   <div class="col-md-3 col-sm-6">
         <%= render 'shared_partials/activity_aggregate'%>
         <div class="epc-item bgm-pink">
-            <div class="easy-pie main-pie" data-percent="<%=overall_percentage_complete %>">
-                <div class="percent"><%= overall_percentage_complete %></div>
+            <div class="easy-pie main-pie" data-percent="<%=current_user.overall_percentage_complete %>">
+                <div class="percent"><%= current_user.overall_percentage_complete %></div>
                 <div class="pie-title">Overall Completed</div>
             </div>
         </div>
