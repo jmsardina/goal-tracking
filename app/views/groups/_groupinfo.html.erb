@@ -1,33 +1,53 @@
-<div class="ms-menu">
-  <div class="ms-block">
-    <div class="ms-user">
-      <h3><%= group.name %></h3>
-    </div>
-    <%= image_tag group.avatar(:thumb) %>
-    <small>
-      <%= @group.cheer_count %>
-      <div class="form-inline">
-        <%= render 'cheers/form', cheerable: group %>
-      </div><br>
-      <%= "#{@group.members.count}" + " members"%>
-    </small>
+<div class="card">
+  <div class="card-header">
+    <h2><%= group.name %></h2>
+    <%= image_tag group.avatar(:thumb) %> 
   </div>
 
-  <div class="listview lv-user m-t-20">
-    <div class="lv-item media active">
-      <p class="about-group">
-        <strong>About The Group</strong><br>
-        <%= group.description %>
-      </p>
+  <div class="card-body card-padding">
+    <%= render 'cheers/form', cheerable: group %>
 
-      <% tags.each do |tag|%>
-        <button class="btn btn-primary btn-xs waves-effect">
-          <%= tag.name %>
-        </button>
-      <% end %>
-    </div>
+    <div class="mini-charts"><!-- Charts begin -->
+      <div class="row">
+        <div class="col-sm-6 col-md-3"><!-- Member Count begin -->
+          <div class="mini-charts-item bgm-cyan">
+            <div class="clearfix">
+              <div class="chart stats-bar"></div>
+              <div class="count">
+                <small>Members</small>
+                <h2><%= @group.members.count %></h2>
+              </div>
+            </div>
+          </div>
+        </div><!-- Member Count end -->
+        <div class="col-sm-6 col-md-3"><!-- Cheers Count begin -->
+          <div class="mini-charts-item bgm-orange">
+            <div class="clearfix">
+              <div class="chart stats-line-2"></div>
+              <div class="count">
+                <small>Cheers</small>
+                <h2><%= @group.cheer_count %></h2>
+              </div>
+            </div>
+          </div>
+        </div><!-- Cheers Count end -->
+      </div>
+    </div><!-- Charts end -->
+
+
+    About The Group
+    <%= group.description %>
+
+    Tags
+    <% tags.each do |tag|%>
+    <button class="btn btn-primary btn-xs waves-effect">
+      <%= tag.name %>
+    </button>
+    <% end %>
+
 
     <% if !@members.include?(current_user) %>
-      <%= render 'invitations/form', invitable: @group, recipient: @group.creator, invitation: @invitation %>
+    <%= render 'invitations/form', invitable: @group, recipient: @group.creator, invitation: @invitation %>
     <% end %>
+  </div>
 </div>

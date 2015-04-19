@@ -2,29 +2,28 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %> 
 
-<div>
-	<%= render 'search/form' %>
-	<%= render 'boards/form' %>
-	<% if @results %>
-		<%= render 'search/results' %>
-	<% end %>
-</div>
+<div class="card">
+  <div class="card-header">
+    <h2><%= @group.name %></h2>
+  </div>
 
-<div class="card m-b-0" id="messages-main">
-	<%= render 'groups/groupinfo', group: @group, tags: @tags %>
-</div>
+			<div class="card-body card-padding">
 
-<div class="ms-body">
-	<div>
-		<div class="row">
-			<%= render @boards %>
-		 </div>
-	</div>
+				<%= render 'search/form' %>
+				<%= render 'boards/form' %>
+				<% if @results %>
+					<%= render 'search/results' %>
+				<% end %>
+
+
+				<%= render 'groups/groupinfo', group: @group, tags: @tags %>
+
+
+
+						<%= render @boards %>
+
+						<%= render @members %>
+			</div>
+
 </div>
-<div class="row", style="padding-left:15px;">
-	<div class="member-scroll">
-		<div class="card", style="width:1140px;">
-			<%= render @members %>
-		</div>
-	</div>
 </div>
