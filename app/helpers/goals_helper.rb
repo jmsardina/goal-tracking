@@ -30,6 +30,7 @@ module GoalsHelper
   end
 
   def overall_percentage_complete
+
     ((completed_activities / total_remaining_goal_activity_occurence.to_f) * 100).round(1)
   end
 
