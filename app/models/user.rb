@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def user_board_count
-    self.groups.boards.count
+    self.groups.map {|group| group.boards.count}.inject(:+)
   end
 
   # for a user get me all the goals self.goals
@@ -91,6 +91,7 @@ class User < ActiveRecord::Base
   end
 
   def completed_activity_occurences
+    # binding.pry
     (total_occurences - total_remaining_occurences)
   end
 
