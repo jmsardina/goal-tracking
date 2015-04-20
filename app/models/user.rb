@@ -91,8 +91,8 @@ class User < ActiveRecord::Base
   end
 
   def completed_activity_occurences
+    ( total_remaining_occurences- total_occurences)
     # binding.pry
-    (total_occurences - total_remaining_occurences)
   end
 
   def overall_percentage_complete

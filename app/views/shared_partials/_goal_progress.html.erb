@@ -10,8 +10,8 @@
             <div class="lv-title m-b-5"><%= goal.name %></div>
 
             <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<%= current_user.overall_percentage_complete %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_user.overall_percentage_complete %>%">
-                    <span class="sr-only"><%= current_user.overall_percentage_complete %>% Complete (success)</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="<%= goal.percentage_activity_complete %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= goal.percentage_activity_complete %>%">
+                    <span class="sr-only"><%= goal.percentage_activity_complete %>% Complete (success)</span>
                 </div>
             </div>
         </div>
