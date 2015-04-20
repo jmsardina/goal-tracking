@@ -1,23 +1,33 @@
-<%= form_for(@group) do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div><br>
-
-  <div class="field">
-    <%= f.label :avatar, "Group Avatar" %>
-    <%= f.file_field :avatar %>
-  </div><br>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+<div class="card col-md-6 col-md-offset-3">
+  <div class="card-header">
+    <h2>Create a Group</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :tags %><br>
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
-  </div>
+  <%= form_for(@group) do |f| %>
 
-  <%= f.submit %>
-<% end %>
+  <div class="card-body card-padding">
+    <div class="form-group fg-line">
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="form-group fg-line">
+      <%= f.label :avatar, "Group Avatar" %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="form-group fg-line">
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </div>
+
+    <div class="form-group fg-line">
+      <%= f.label :tags %><br>
+      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+    </div>
+
+    <%= f.submit %>
+  </div>
+  <% end %>
+</div>
