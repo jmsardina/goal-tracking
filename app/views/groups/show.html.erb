@@ -5,11 +5,22 @@
 <div class="card">
 	<div class="card-body card-padding">
 	<%= render 'groups/groupinfo', group: @group, tags: @tags %>
-	
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body card-padding">
+	<%= render 'search/form' %>
+	</div>
+</div>
+<div class="card">
+	<div class="card-body card-padding">
 	<%= render 'boards/form' %>
+	<%= render @boards if @boards %>
+	</div>
+</div>
+
 	
 	<%= render 'search/results' if @results %>
 	
-	<%= render @boards if @boards %>
-	</div>
 </div>

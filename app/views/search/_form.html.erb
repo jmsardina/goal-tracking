@@ -1,11 +1,13 @@
 <div class="row">
  <%= form_tag :controller => 'search', :action => 'create', :method => 'get' do %>
-	<div class="form-group fg-line">
 		<div class="col-sm-8">
+	<div class="form-group fg-line">
       <%= text_field_tag :keyword, params[:keyword], :id => 'search_field', placeholder: "Search for other members to invite them to the group", class: "form-control" %>
       </div>
-      </div>
       <%= hidden_field_tag :group_id, @group.id %>
+      </div>
+      <div class="col-sm-3">
       	<%= submit_tag "Search", class: "btn btn-info waves-effect" %> 
+      	</div>
   <% end %> 
 </div>
