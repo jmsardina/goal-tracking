@@ -41,6 +41,7 @@ class ActivitiesController < ApplicationController
 	end
 
 	def destroy
+		binding.pry
 		track_feed(@activity)
 		set_activity.destroy
 		render nothing: :true, status: :ok

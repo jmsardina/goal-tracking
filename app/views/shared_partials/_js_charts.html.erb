@@ -68,9 +68,8 @@
 
     /* Dash Widget Line Chart */
     if ($('.dash-widget-visits')[0]) {
-        sparklineLine('dash-widget-visits', <%= activities_array %>, '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
+        sparklineLine('dash-widget-visits', <%= current_user.activity_count_array %>, '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
     }
-
 
 
     /*

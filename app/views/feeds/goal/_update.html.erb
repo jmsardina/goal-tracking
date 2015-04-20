@@ -1,1 +1,5 @@
-updated a goal <%= feed.trackable.description %> <small><%=time_ago_in_words(feed.updated_at) %> ago</small>
+<% if feed.trackable.nil? %>
+ <p> No updates...</p>
+<%else%>
+	updated a goal <%= feed.trackable.description %> <small><%=time_ago_in_words(feed.updated_at) %> ago</small>
+<%end%>

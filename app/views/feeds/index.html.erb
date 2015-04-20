@@ -2,7 +2,13 @@
 
 <% @feeds.each do |feed| %>
 	<%= div_for feed do %>
-		<%= feed.user.name %>
-		<%= render "feeds/#{feed.trackable_type.underscore}/#{feed.action}", feed: feed %>
+		<% if feed.trackable.nil? %>
+			<h1>feed me feeds</h1>
+		<%else%>
+			<% binding.pry %>
+			<%= feed.user.name %>
+			<%= render "feeds/#{feed.trackable_type.underscore}/#{feed.action}", feed: feed %>
+
+		<%end%>
 	<%end%>
 <%end%>

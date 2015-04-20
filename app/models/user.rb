@@ -63,22 +63,43 @@ class User < ActiveRecord::Base
   end
 
   def user_board_count
-    sum = 0
-    self.groups.each do |group|
-      sum += group.boards.count
-    end
-    sum
+    self.groups.map {|group| group.boards.count}.inject(:+)
   end
-  # def upcoming_activities
-  #   activities_hash = {}
 
-  #   self.activities.each do |activity|
-  #     (activities_hash[activity.description] = {activity.upcoming_due_dates.first => activity.remaining_for_period})
-  #   end
-  #   [activities_hash]
-  # end
+  # for a user get me all the goals self.goals
+  # count the activities for each goal
 
-  # def due_this_week
+  def activity_count_array
+    user_goals = self.goals
+    user_goals.map {|goal| goal.activities.count}
+  end
 
-  # end
+  def total_remaining_occurences # total remaining occurences for a user
+    if self.activities.any?
+      self.activities.pluck(:occurences).inject(:+)
+    else
+      0
+    end
+  end
+
+  def total_occurences # total occurences for a user
+    if self.activities.any?
+      self.activities.map {|activity| activity.number_occurences}.inject(:+)
+    else
+      0
+    end
+  end
+
+  def completed_activity_occurences
+    ( total_occurences - total_remaining_occurences)
+    # binding.pry
+  end
+
+  def overall_percentage_complete
+    ((completed_activity_occurences / total_occurences.to_f) * 100).round(1)
+  end
+
+
+
+
 end

@@ -8,12 +8,12 @@
     <div class="p-20">
 
         <small>Activity completed</small>
-        <h3 class="m-0 f-400"><%= completed_activities %></h3>
+        <h3 class="m-0 f-400"><%= current_user.completed_activity_occurences %></h3>
 
         <br/>
 
         <small>Activity remaining</small>
-        <h3 class="m-0 f-400"><%= total_remaining_goal_activity_occurence %></h3>
+        <h3 class="m-0 f-400"><%= current_user.total_remaining_occurences %></h3>
 
         <br/>
 

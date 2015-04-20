@@ -47,12 +47,8 @@
             </div>
 
             <p class="c-black f-500 m-b-20 m-t-20">
-              <%= f.label :tags %>
-              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |box| %>
-              <%= box.label :class => "checkbox checkbox-inline m-r-20" %>
-              <%= box.check_box :class => "checkbox" %>
-              <%= content_tag(:i, "", class: "input-helper") %>
-              <% end %>
+              <%= f.label :tags %><br>
+              <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
             </p>
           </div>
         </div>

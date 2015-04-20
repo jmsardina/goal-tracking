@@ -87,6 +87,7 @@ class Activity < ActiveRecord::Base
     upcoming
   end
 
+
   def add_point_and_decrement_occurences
     @user = self.user
     if self.complete?

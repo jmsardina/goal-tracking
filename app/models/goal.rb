@@ -1,8 +1,6 @@
 class Goal < ActiveRecord::Base
 
 	has_many :activities, dependent: :destroy
-  # has_many :goal_tags
-  # has_many :tags, through: :goal_tags
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :user
   validates :name, :description, presence: true
@@ -23,28 +21,38 @@ class Goal < ActiveRecord::Base
     (self.due_date - Time.now.to_date).to_i
   end
 
+  # get the activity occurences related to that goal
+  # get the activity remaining occurences for that goal
 
-  def total_activity_occurence
-    occurence = 0
-    self.activities.each do |activity|
-      if activity.number_occurences
-        occurence += activity.number_occurences
+  def sum_activity_occurences
+    if self.activities.any?
+      array = []
+      self.activities.map do |activity|
+        array << activity.number_occurences
       end
+      array.inject(:+)
+      # binding.presencery
+    else
+        0
     end
-    occurence
   end
 
-  def total_remaining_occurence
-    remaining = 0
-    self.activities.each do |activity|
-      remaining += activity.occurences
+  def sum_remaining_activity_occurences
+    if self.activities.any?
+      array =[]
+      self.activities.each do |activity|
+        array << activity.occurences
+      end
+      array.inject(:+)
+    else
+      0
     end
-    remaining
   end
 
-
-  def percentage_activity_occurence_complete
-    ((1 - (self.total_remaining_occurence / self.total_activity_occurence.to_f)) * 100).round(1)
+  def percentage_activity_complete
+    completed = ( sum_activity_occurences - sum_remaining_activity_occurences)
+    # binding.pry
+    (sum_activity_occurences > 0) ? ((completed.to_f / sum_activity_occurences)*100).round(0) : 0
+    # binding.pry
   end
-
 end
