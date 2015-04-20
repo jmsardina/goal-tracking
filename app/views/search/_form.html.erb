@@ -1,9 +1,11 @@
-<div class="form-group fg-line">
+<div class="row">
  <%= form_tag :controller => 'search', :action => 'create', :method => 'get' do %>
-      <%= text_field_tag :keyword, params[:keyword], :id => 'search_field', placeholder: "Search for other users", class: "form-control" %>
-      <%= hidden_field_tag :group_id, @group.id %>
-      <div class="actions">
-      	<%= submit_tag "Search ", :content => nil, class: "btn btn-primary btn-sm m-t-1" %> 
+	<div class="form-group fg-line">
+		<div class="col-sm-8">
+      <%= text_field_tag :keyword, params[:keyword], :id => 'search_field', placeholder: "Search for other members to invite them to the group", class: "form-control" %>
       </div>
+      </div>
+      <%= hidden_field_tag :group_id, @group.id %>
+      	<%= submit_tag "Search", class: "btn btn-info waves-effect" %> 
   <% end %> 
 </div>

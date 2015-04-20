@@ -1,6 +1,6 @@
-<div class="card-body card-padding">
-<%= form_for([@group, @board]) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit "Add New Board" %>
-<% end %>
+<div class="form-group fg-line">
+	<%= form_for([@group, @board]) do |f| %>
+	<%= f.text_field :name, placeholder: "Name the new board" %>
+	<%= f.submit "Add New Board" %>
+	<% end %>
 </div>
