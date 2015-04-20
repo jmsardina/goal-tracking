@@ -68,15 +68,17 @@ function addActivityListener(){
 }
 
 function deleteActivity(e){
-  e.preventDefault();
-  var $li = $(this).parents("li");
-  var href = $("form", $li).attr("action");
 
-  $.ajax(href, {
+  e.preventDefault();
+  var $tr = $(this).parents("tr");
+  var href = $("form", $tr).attr("action");
+  debugger
+  $.ajax({
+    "url": href,
     "method": "DELETE",
     "success": function(){
-      $li.slideUp(function(){
-
+      debugger
+      $tr.slideUp(function(){
         $(this).remove();
       });
     }
