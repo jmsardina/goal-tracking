@@ -1,2 +1,5 @@
-created a goal <%= feed.trackable.name %> <small><%=time_ago_in_words(feed.trackable.created_at) %> ago</small>
-
+<% if feed.trackable.nil? %>
+ <p> Nothing created...</p>
+<%else%>
+	created a goal <%= feed.trackable.name %> <small><%=time_ago_in_words(feed.trackable.created_at) %> ago</small>
+<%end%>

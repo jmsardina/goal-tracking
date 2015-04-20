@@ -52,7 +52,7 @@ class Goal < ActiveRecord::Base
   def percentage_activity_complete
     completed = ( sum_activity_occurences - sum_remaining_activity_occurences)
     # binding.pry
-    (sum_activity_occurences > 0) ? ((completed / sum_activity_occurences)*100).round(0) : 0
+    (sum_activity_occurences > 0) ? ((completed.to_f / sum_activity_occurences)*100).round(0) : 0
     # binding.pry
   end
 end
