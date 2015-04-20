@@ -33,8 +33,9 @@ lang_goal = Goal.create(
 	motivation: "I'm traveling to France in November", 
 	potential_barrier: "I don't know how I'll find the time", 
 	coping_strategy: "Using Goaly!", 
-	support: "My friend so-and-so is learning with me.", 
-	activities: Activity.create([
+	support: "My friend so-and-so is learning with me.")
+
+lang_activities = Activity.create([
 		{description: "Practice Duolingo", 
 			period: "day", 
 			barrier: "I feel like I don't have time.", 
@@ -53,17 +54,20 @@ lang_goal = Goal.create(
 			period: "week", 
 			barrier: "", 
 			facilitator: "", 
-			frequency: 2}]))
+			frequency: 2}])
+
+lang_goal.activities << lang_activities
 
 exercise_goal = Goal.create(
 	name: "Exercise", 
 	description: "Exercise 3x/week for the next 3 months", 
-	due_date: "2015-07-15T".to_date, 
+	due_date: 60.days.from_now, 
 	motivation: "I want to go hiking this summer", 
 	potential_barrier: "I don't know how I'll find the time", 
 	coping_strategy: "Using Goaly!", 
-	support: "My friend so-and-so is doing this with me.", 
-	activities: Activity.create([
+	support: "My friend so-and-so is doing this with me.")
+
+exercise_activities = Activity.create([
   {description: "Do yoga", 
   	period: "week", 
   	barrier: "I feel like I don't have time.", 
@@ -78,14 +82,18 @@ exercise_goal = Goal.create(
   	period: "week", 
   	barrier: "I don't like strength-training that much.", 
   	facilitator: "???", 
-  	frequency: 4}]))
+  	frequency: 4}])
+
+exercise_goal.activities << exercise_activities
 
 def create_users(lang_goal, exercise_goal)
   index = 0
   while index < EMAILS.length
-    user = User.create(name: NAMES.sample, email: EMAILS[index], password: "password123", goals: [lang_goal, exercise_goal])
+    user = User.create(name: NAMES.sample, email: EMAILS[index], password: "password123")
+    user.goals << lang_goal
+    user.goals << exercise_goal
+    user.save
     index += 1
-  	binding.pry
   end
 end
 
