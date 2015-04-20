@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :configure_new_column_to_devise_permitted_parameters, if: :devise_controller?
 
+  def pending_requests
+    @pending_requests = current_user.requests_received.where(status: "pending")
+  end
   protected
 
   def configure_new_column_to_devise_permitted_parameters

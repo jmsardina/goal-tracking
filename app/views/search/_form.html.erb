@@ -1,7 +1,6 @@
 <div class="search">
  <%= form_tag :controller => 'search', :action => 'create', :method => 'get' do %>
       <%= text_field_tag :keyword, params[:keyword], :id => 'search_field', placeholder: "Connect with others!" %>
-      <%= hidden_field_tag :group_id, @group.id %>
       <%= submit_tag "Search ", :content => nil %> 
   <% end %> 
 </div>

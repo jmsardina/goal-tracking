@@ -37,6 +37,23 @@
       </div>
     </div>
 
+    <header id="header">
+      <ul class="header-inner">
+        <li class="pull-right">
+          <ul class="top=menu">
+            <li id="top-search">
+              <a class="tm-search" href></a>
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="tm-notification" href>
+                <%= render @pending_requests %>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+
 <div class="row">
   <div class="col-md-12">
     <div class="card">
