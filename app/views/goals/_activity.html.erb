@@ -1,0 +1,14 @@
+<tr id="activity_<%= activity.id %>">
+  <%= form_for([goal, activity], remote: true) do |f| %>
+    <td><%= f.check_box :status, class: "toggle" %></td>
+  <% end %>
+  <td><%= activity.description %></td>
+  <td><%= activity.barrier %></td>
+  <td><%= activity.facilitator %></td>
+  <td><%= activity.frequency %></td>
+  <td><%= activity.period %></td>
+  <td><%= activity.activity_points %></td>
+  <td><%= activity.remaining_for_period %></td>
+  <td><%= activity.goal.due_date %></td>
+  <td><button class="destroy"></button></td>
+</tr>

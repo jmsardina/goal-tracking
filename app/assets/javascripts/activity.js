@@ -68,16 +68,14 @@ function addActivityListener(){
 }
 
 function deleteActivity(e){
-
   e.preventDefault();
   var $tr = $(this).parents("tr");
   var href = $("form", $tr).attr("action");
-  debugger
+
   $.ajax({
     "url": href,
     "method": "DELETE",
     "success": function(){
-      debugger
       $tr.slideUp(function(){
         $(this).remove();
       });
@@ -91,6 +89,8 @@ function showActivityForm(){
 }
 
 $(function(){
+  // $("table.table").on("submit", )
+
   $("ul.list").on("change", "input:checkbox", Activity.updateStatus);
   $("ul.list").on("submit", "form.update", Activity.updateContent);
   $("ul.list").on("dblclick", "li form label", showActivityForm);
