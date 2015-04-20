@@ -25,7 +25,7 @@ class SearchController < ApplicationController
     #   flash[:notice] = "No results match your search..."
     #   # redirect_to root_path
     # else
-    @group = Group.find(params[:group_id].to_i)
+    # @group = Group.find(params[:group_id].to_i)
     @invitation = Invitation.new
       # @user_group = UserGroup.new
     render :results

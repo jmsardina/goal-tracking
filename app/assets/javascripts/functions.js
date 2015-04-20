@@ -327,10 +327,10 @@ $(document).ready(function(){
         });
     }
 
-    //Scrollbar for HTML but not for login page
-    if (!$('.login-content')[0]) {
-        scrollbar('html', 'rgba(0,0,0,0.3)', '5px');
-    }
+    // //Scrollbar for HTML but not for login page
+    // if (!$('.login-content')[0]) {
+    //     scrollbar('html', 'rgba(0,0,0,0.3)', '5px');
+    // }
     
     //Scrollbar Tables
     if ($('.table-responsive')[0]) {
@@ -532,24 +532,24 @@ $(document).ready(function(){
      * Date Time Picker
      */
     
-    //Date Time Picker
-    if ($('.date-time-picker')[0]) {
-	   $('.date-time-picker').datetimepicker();
-    }
+    // //Date Time Picker
+    // if ($('.date-time-picker')[0]) {
+	   // $('.date-time-picker').datetimepicker();
+    // }
     
     //Time
-    if ($('.time-picker')[0]) {
-    	$('.time-picker').datetimepicker({
-    	    format: 'LT'
-    	});
-    }
+    // if ($('.time-picker')[0]) {
+    // 	$('.time-picker').datetimepicker({
+    // 	    format: 'LT'
+    // 	});
+    // }
     
     //Date
-    if ($('.date-picker')[0]) {
-    	$('.date-picker').datetimepicker({
-    	    format: 'DD/MM/YYYY'
-    	});
-    }
+    // if ($('.date-picker')[0]) {
+    // 	$('.date-picker').datetimepicker({
+    // 	    format: 'DD/MM/YYYY'
+    // 	});
+    // }
 
     /*
      * Form Wizard
@@ -564,34 +564,34 @@ $(document).ready(function(){
     /*
      * Bootstrap Growl - Notifications popups
      */ 
-    function notify(message, type){
-        $.growl({
-            message: message
-        },{
-            type: type,
-            allow_dismiss: false,
-            label: 'Cancel',
-            className: 'btn-xs btn-inverse',
-            placement: {
-                from: 'top',
-                align: 'right'
-            },
-            delay: 2500,
-            animate: {
-                    enter: 'animated fadeIn',
-                    exit: 'animated fadeOut'
-            },
-            offset: {
-                x: 20,
-                y: 85
-            }
-        });
-    };
+    // function notify(message, type){
+    //     $.growl({
+    //         message: message
+    //     },{
+    //         type: type,
+    //         allow_dismiss: false,
+    //         label: 'Cancel',
+    //         className: 'btn-xs btn-inverse',
+    //         placement: {
+    //             from: 'top',
+    //             align: 'right'
+    //         },
+    //         delay: 2500,
+    //         animate: {
+    //                 enter: 'animated fadeIn',
+    //                 exit: 'animated fadeOut'
+    //         },
+    //         offset: {
+    //             x: 20,
+    //             y: 85
+    //         }
+    //     });
+    // };
     
-    //Welcome Message (not for login page)
-    if (!$('.login-content')[0]) {
-        notify('Welcome back Mallinda Hollaway', 'inverse');
-    }
+    // //Welcome Message (not for login page)
+    // if (!$('.login-content')[0]) {
+    //     notify('Welcome back Mallinda Hollaway', 'inverse');
+    // }
 
     /*
      * Waves Animation
@@ -697,22 +697,22 @@ $(document).ready(function(){
     /*
      * Login
      */
-    if ($('.login-content')[0]) {
-        //Add class to HTML. This is used to center align the logn box
-        $('html').addClass('login-content');
+    // if ($('.login-content')[0]) {
+    //     //Add class to HTML. This is used to center align the logn box
+    //     $('html').addClass('login-content');
         
-        $('body').on('click', '.login-navigation > li', function(){
-            var z = $(this).data('block');
-            var t = $(this).closest('.lc-block');
+    //     $('body').on('click', '.login-navigation > li', function(){
+    //         var z = $(this).data('block');
+    //         var t = $(this).closest('.lc-block');
             
-            t.removeClass('toggled');
+    //         t.removeClass('toggled');
             
-            setTimeout(function(){
-                $(z).addClass('toggled');
-            });
+    //         setTimeout(function(){
+    //             $(z).addClass('toggled');
+    //         });
             
-        })
-    }
+    //     })
+    // }
     
     /*
      * Fullscreen Browsing

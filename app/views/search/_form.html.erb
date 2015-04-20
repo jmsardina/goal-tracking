@@ -1,6 +1,6 @@
-<div class="search">
+<!-- <div class="search"> -->
  <%= form_tag :controller => 'search', :action => 'create', :method => 'get' do %>
-      <%= text_field_tag :keyword, params[:keyword], :id => 'search_field', placeholder: "Connect with others!" %>
-      <%= submit_tag "Search ", :content => nil %> 
+    <%= text_field_tag :keyword, params[:keyword], :id => 'search_field', placeholder: "Connect with others!" %>
+    <%= submit_tag "Search ", :content => nil %> 
   <% end %> 
-</div>
+<!-- </div> -->

@@ -10,7 +10,8 @@
   <td class="frequency"><%= activity.activity_points %></td>
   <td class ="counter"><%= activity.remaining_for_period %></td>
   <td class="earliest-due-date"><%= activity.upcoming_due_dates.first.strftime("%B %d, %Y")%></td>
-  <td><button class="destroy"></button></td>
+  <td><%=button_to("Delete", "/goals/#{@goal.id}/activities/#{activity.id}", method: "delete", remote: true) %></td>
+  <!-- <td><button class="destroy"></button></td> -->
       </tr>
     <tr class="activity-li-attributes">
      <!--  <td><%#= activity.period %></td>

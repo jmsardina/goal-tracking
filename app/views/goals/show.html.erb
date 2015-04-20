@@ -45,7 +45,9 @@
           </thead>
 
           <tbody style="overflow=scroll;">
-            <%= render @activities %>
+            <% @activities.each do |activity| %>
+              <%= render "activity", :activity => activity, :goal => @goal %>
+            <% end %>
           </tbody>
         </table>
         <!-- </ul> -->

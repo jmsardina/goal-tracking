@@ -1,16 +1,17 @@
 <div class="member-block">
   <%= div_for_user(user) do %>
     <!-- <div class="member-picture"> -->
-      <% if !current_user.uid %>
-        <%=image_tag user.avatar(:thumb) %><br>
+      <% if !user.uid %>
+      <img src="<%=user.avatar.url%>" style="height:auto;width:auto;max-width:50px;max-height:50px;">
+        <%#=image_tag user.avatar(:thumb) %><br>
       <% else %>
-        <%=image_tag user.image_url %><br>
+        <img src="<%=user.image_url%>" style="height:auto;width:auto;max-width:50px;max-height:50px;">
       <% end %>
     <!-- </div> -->
         <%=user.name %>
-    <% if (current_user == @group.creator) && (user != @group.creator) %>
-      <button class="destroy">Remove</button>
-    <% end %>
+    <%# if (user == @group.creator) && (user != @group.creator) %>
+      <!-- <button class="destroy">Remove</button> -->
+    <%# end %>
   <% end %>
 </div>
 

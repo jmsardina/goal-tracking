@@ -12,12 +12,23 @@ class ActivitiesController < ApplicationController
 		@goal = Goal.find(params[:goal_id])
 		@activity = Activity.new(activity_params)
 		@activity.goal = @goal
-		if @activity.save
-			track_feed(@activity)
-			@activity.occurences = @activity.number_occurences
-			@activity.save
-		end
-		redirect_to goal_path(@goal)
+		# if @activity.save
+		# 	track_feed(@activity)
+		# 	@activity.occurences = @activity.number_occurences
+		# 	@activity.save
+		# end
+		# redirect_to goal_path(@goal)
+
+
+		respond_to do |format|
+	    if @activity.save
+	      format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+	      format.js { }
+	    else
+	      format.html { render action: "new" }
+	      format.js
+	    end
+	  end
 	end
 
 	def edit
@@ -41,9 +52,15 @@ class ActivitiesController < ApplicationController
 	end
 
 	def destroy
-		binding.pry
 		track_feed(@activity)
-		set_activity.destroy
+		set_activity
+		respond_to do |format|
+	    if @activity.destroy
+	      format.html
+	      format.js
+	    end
+	  end
+
 		render nothing: :true, status: :ok
 	end
 
