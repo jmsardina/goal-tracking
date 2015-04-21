@@ -1,13 +1,6 @@
 <div class="card-header">
-  <h2><%= group.name %></h2>
-  <img><%= image_tag group.avatar(:thumb) %> </img>
-  <div>
-    <h2>Tags: </h2>
-    <% @tags.each do |tag|%>
-    <button class="btn btn-primary btn-xs waves-effect">
-      <%= tag.name %></button>
-      <% end %>
-  </div>
+  <h1>Group: <%= group.name %></h1>
+
 
   <div class="mini-charts"><!-- Charts begin -->
     <div class="row">
