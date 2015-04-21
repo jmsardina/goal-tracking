@@ -1,65 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <h1><%= current_user.name %>'s Goals</h1>
+  </div>
+</div>
+
 <%= render 'shared_partials/js_charts' %>
 
 <%= render 'shared_partials/mini_dashboard_charts' %>
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     <%= render 'shared_partials/goal_container' %>
   </div>
-  <div class="col-sm-6">
-     <%= render 'shared_partials/feed_container' %>
-  </div>
-</div>
-<div class="row">
   <div class="col-sm-4">
-    <%= render 'shared_partials/goal_progress' %>
+   <%= render 'shared_partials/feed_container' %>
+ </div>
+ <div class="col-sm-4">
+    <%= render 'shared_partials/group_container'%>
   </div>
-  <div class="col-md-3 col-sm-6">
-        <%= render 'shared_partials/activity_aggregate'%>
-        <div class="epc-item bgm-pink">
-            <div class="easy-pie main-pie" data-percent="<%=current_user.overall_percentage_complete %>">
-                <div class="percent"><%= current_user.overall_percentage_complete %></div>
-                <div class="pie-title">Overall Completed</div>
-            </div>
-        </div>
-    </div>`
-    <div class="col-sm-4">
-        <div class="mini-charts-item bgm-pink">
-            <div class="clearfix">
-                <div class="chart chart-pie stats-pie"></div>
-                <div class="count">
-                    <small>Groups</small>
-                    <h2><%= current_user.groups.count %></h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="mini-charts-item bgm-red">
-            <div class="clearfix">
-                <div class="chart stats-line"></div>
-                <div class="count">
-                    <small>Boards</small>
-                    <h2><%= current_user.user_board_count %></h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="mini-charts-item bgm-blue">
-            <div class="clearfix">
-                <div class="chart chart-pie stats-pie"></div>
-                <div class="count">
-                    <small>Comments</small>
-                    <h2><%= current_user.comments.count %></h2>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-4">
-        <%= render 'shared_partials/group_container'%>
-    </div>
 </div>
-<h3>Pending requests</h3>
-  <%= render 'invitations/request', requests: @pending_requests %>
-
-

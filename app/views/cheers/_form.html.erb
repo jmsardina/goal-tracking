@@ -1,7 +1,8 @@
-<%= form_for([cheerable, @cheer]) do |f| %>
-  <%= f.hidden_field :cheerable_type, value: "#{cheerable.class.name}" %>
-  <%= f.hidden_field :cheerable_id, value: "#{cheerable.id}" %>
-  <%= f.hidden_field :user_id, value: "#{current_user.id}" %>
-    <%= f.submit "Cheer"%>
-  </i>
-<% end %>
+<div class="form-group fg-line">	
+	<%= form_for([cheerable, @cheer]) do |f| %>
+		<%= f.hidden_field :cheerable_type, value: "#{cheerable.class.name}" %>
+		<%= f.hidden_field :cheerable_id, value: "#{cheerable.id}" %>
+		<%= f.hidden_field :user_id, value: "#{current_user.id}" %>
+	<%= f.submit "Cheer"%>
+	<% end %>
+</div>

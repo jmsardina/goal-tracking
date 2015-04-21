@@ -1,30 +1,31 @@
 <% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
+	<div class="notice"><%= flash[:notice] %></div>
 <% end %> 
 
-<div>
-	<%= render 'search/form' %>
-	<%= render 'boards/form' %>
-	<% if @results %>
-		<%= render 'search/results' %>
-	<% end %>
-</div>
-
-<div class="card m-b-0" id="messages-main">
+<div class="card">
+	<div class="card-body card-padding">
+	
 	<%= render 'groups/groupinfo', group: @group, tags: @tags %>
+	
+	</div>
 </div>
 
-<div class="ms-body">
-	<div>
-		<div class="row">
-			<%= render @boards %>
-		 </div>
+<div class="card">
+	<div class="card-body card-padding">
+	
+	<%= render 'search/form' %>
+	
 	</div>
 </div>
-<div class="row", style="padding-left:15px;">
-	<div class="member-scroll">
-		<div class="card", style="width:1140px;">
-			<%= render @members %>
-		</div>
+<div class="card">
+	<div class="card-body card-padding">
+	
+	<%= render 'boards/form' %>
+	<%= render @boards if @boards %>
+	
 	</div>
+</div>
+
+	<%= render 'search/results' if @results %>
+	
 </div>

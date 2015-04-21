@@ -7,7 +7,7 @@
 		<%else%>
 			<% binding.pry %>
 			<%= feed.user.name %>
-			<%= render "feeds/#{feed.trackable_type.underscore}/#{feed.action}", feed: feed %>
+			<%= render "feeds/#{feed.trackable_type.underscore}/#{feed.action}", feed: feed%>
 
 		<%end%>
 	<%end%>
