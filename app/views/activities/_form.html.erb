@@ -1,43 +1,55 @@
-<%= form_for(@activity, url: goal_activities_path(@goal), id: "new-activity") do |f| %>
+  <%= form_for(@activity, url: goal_activities_path(@goal), id: "new-activity") do |f| %>
 
   <% if @activity.errors.any? %>
-    <div id="error_explanation">
+  <div class="card" id="error_explanation">
+    <div class="alert alert-warning" role="alert">
       <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
-
-      <ul>
-        <% @activity.errors.full_messages.each do |msg| %>
+      <p>
+        <ul>
+          <% @activity.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
+      </p>
     </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <% end %>
   </div>
 
-  <div class="field">
+<div class="card">
+  <div class="card-header">
+    <h2>Add an Activity</h2>
+  </div>
+  <div class="card-body card-padding">
+    <div class="fg-line">
+      <p class="c-black f-500 m-b-20">
+        <%= f.label :description %><br>
+        <%= f.text_field :description, class: "form-control input-lg", placeholder: "Name of the goal...", autofocus: true %>
+      </p>
+
+    </div>
     <label>How often will you do this activity?</label>
-    <%= f.select :frequency, options_for_select((1..12)) %>
-    <%= f.label :frequency, "times"%>,
-    <%= f.label :period, "every"%>
-    <%= f.select :period, options_for_select(["day", "week", "month", "year"]) %>
-  </div><br>
+    <div class="row">
+      <div class="col-sm-5">
+        <%= f.select :frequency, options_for_select((1..12)) %>
+        <%= f.label :frequency, "times"%>,
+      </div>
+      <div class="col-sm-5">
+        <%= f.label :period, "every"%>
+        <%= f.select :period, options_for_select(["day", "week", "month", "year"]) %>
+      </div>
+    </div>
+    <div class="fg-line">
+      <%= f.label :barrier, "Challenge"%>
+      <%= f.select :barrier, options_for_select(["Lack of time", "Lack of Support", "I forget", "I don't like to do it", "It hurts"]) %>
+    </div>
 
-  <div class="field">
-    <%= f.label :barrier, "Challenge"%>
-    <%#= f.text_area :barrier %>
-    <%= f.select :barrier, options_for_select(["Lack of time", "Lack of Support", "I forget", "I don't like to do it", "It hurts"]) %>
-  </div><br>
+    <div class="fg-line">
+      <%= f.label :facilitator, "How will you cope with this challenge?"%>
+      <%#= f.text_area :facilitator %>
+      <%= f.select :facilitator, options_for_select(["I will set my alarm", "I will ask a friend to remind me", "I will take a warm shower afterwards"]) %>
+    </div>
 
-  <div class="field">
-    <%= f.label :facilitator, "How will you cope with this challenge?"%>
-    <%#= f.text_area :facilitator %>
-   <%= f.select :facilitator, options_for_select(["I will set my alarm", "I will ask a friend to remind me", "I will take a warm shower afterwards"]) %>
-  </div><br>
-
-
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>
