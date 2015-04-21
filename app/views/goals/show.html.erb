@@ -1,57 +1,49 @@
 <section id="content">
-  <%= link_to "Back", goals_path %>
-  <%= link_to "Edit", edit_goal_path(@goal) %>
+  <div class="card">
+  <div class="card-body card-padding"
+  <% if @goal.user == current_user %>
+    <h2>GOAL: <%= @goal.name %><br> <small><%= @goal.days_left%> DAYS LEFT TO COMPLETE THIS GOAL!</small></h2>
+    <h5>Description: <%= @goal.description %></h5>
+    <h5>Motivation: <%= @goal.motivation %></h5>
+    <h5>Potential Barriers: <%= @goal.potential_barrier %></h5>
+    <h5>Supports: <%= @goal.support %></h5>
 
-  <div class="block-header">
-    <% if @goal.user == current_user %>
-     <!--  <header id="header"> -->
-      <h2>
-        <%= @goal.name %>
-        <strong>Tags:</strong>
-        <% @tags.each do |tag|%>
-          <%= tag.name %>
-        <% end %>
-        <small><%= @goal.days_left%> DAYS LEFT TO COMPLETE THIS GOAL!</small>
-      </h2>
-        <h4><%= @goal.description %></h4>
-
-        <button id="show-activity-form">Add Activity</button>
-        <%= render 'activities/form' %>
+    <%= button_to "Edit this goal", edit_goal_path(@goal), class: "btn btn-primary btn-sm m-t-1" %>
   </div>
-
-      </header>
-    <div class="card">
-      <div class="card-header">
-        <h2>
-          Things to do <small><em>We know you can do this!</em></small>
-        </h2>
-      </div>
-
-      <div class="card-body table-responsive">
-       <!--  <ul id="activities-list" data-actvity-id="<%#= @goal.id %>" class="list"> -->
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Status</th>
-              <th>Description</th>
-              <th>Barrier</th>
-              <th>Facilitator</th>
-              <th>Frequency</th>
-              <th>Period</th>
-              <th>Points</th>
-              <th>Remaining for Period</th>
-              <th>Due By</th>
-            </tr>
-          </thead>
-
-          <tbody style="overflow=scroll;">
-            <%= render @activities %>
-          </tbody>
-        </table>
-        <!-- </ul> -->
-      
-      </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h2>Activities</h2>
     </div>
-    <% end %>
+
+    <div class="card-body table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Barrier</th>
+            <th>Facilitator</th>
+            <th>Frequency</th>
+            <th>Period</th>
+            <th>Points</th>
+            <th>Remaining for Period</th>
+            <th>Due By</th>
+          </tr>
+        </thead>
+
+        <tbody style="overflow=scroll;">
+          <% @activities.each do |activity| %>
+          <%= render partial: 'activities/activity', locals: { :activity => activity, :goal => @goal} %>
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+  <div class="card">
+    <%= render 'activities/form' %>
+  </div>
+  <% end %>
 </section>
 

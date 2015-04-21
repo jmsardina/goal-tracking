@@ -1,12 +1,11 @@
-    <div class="card feed-container container-height">
+    <div class="card feed-container container-height" style="height: 350px" >
       <div class="card-header ch-alt m-b-20">
         <h2>Feed<small>Community feed</small></h2>
       </div>
-      <div class="card-body card-height scrollable">
-          <div class="listview">
+      <div class="card-body card-height" style="overflow-y: scroll;" height="350px;">
+          <div class="listview" style="overflow-x: hidden;">
           <% @feeds.each do |feed| %>
             <a class="lv-item">
-
                 <div class="media-body">
                   <div class="lv-title"><%= feed.user.name %></div>
                   <small class="lv-small line-wrap"><%= render "feeds/#{feed.trackable_type.underscore}/#{feed.action}", feed: feed %></small>

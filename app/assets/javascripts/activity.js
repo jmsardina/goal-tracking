@@ -24,12 +24,19 @@ Activity.updateStatus = function(e){
   var $form = $(this).parents("form:first");
   var href = $form.attr("action");
 
+  $.ajaxSetup({
+   headers: {
+     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+   }
+  });
+
   $.ajax(href, {
-    "method": "PATCH",
-    "data": $form.serialize(),
-    "success": function(response){
-      $checkbox.parents("li:first").toggleClass("completed");
-    }
+    method: "PATCH",
+
+    data: $form.serialize()
+    // "success": function(response){
+    //   $checkbox.parents("li:first").toggleClass("completed");
+    // }
   })
 }
 
@@ -63,8 +70,8 @@ Activity.stopEdit = function(e){
 
 function addActivityListener(){
   $("#show-activity-form").click(function(){
-      $("form").show();
-    });
+    $("form").show();
+  });
 }
 
 function deleteActivity(e){

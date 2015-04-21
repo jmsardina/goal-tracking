@@ -1,0 +1,6 @@
+var id = <%= @activity.id %>
+
+//debugger;
+$('tr[data-activity-id=' + id + ']').replaceWith("<%= j render partial: 'activity', locals: { :activity => @activity, :goal => @goal } %>");
+
+// $("ul.list").on("change", "input:checkbox", Activity.updateStatus);

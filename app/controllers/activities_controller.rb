@@ -1,5 +1,8 @@
 class ActivitiesController < ApplicationController
 
+	# skip_before_action :verify_authenticity_token
+	skip_before_filter :verify_authenticity_token
+
 	def index
 		@activities = Activity.all
 	end
@@ -25,13 +28,19 @@ class ActivitiesController < ApplicationController
 	end
 
 	def update
+		#binding.pry
 		@goal = Goal.find(params[:goal_id])
 		@activity = @goal.activities.find(params[:id])
-		@activity.update(activity_params)
+		if params[:activity]
+			@activity.update(activity_params)
+		end
 		@activity.save
 		track_feed(@activity)
 		@activity.add_point_and_decrement_occurences
-		render nothing: true, status: :ok
+		#render nothing: true, status: :ok
+		respond_to do |f|
+			f.js { }
+		end
 	end
 
 

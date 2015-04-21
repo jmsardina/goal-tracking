@@ -1,5 +1,5 @@
 <%= tr_for_activity(activity) do %>
-  <%= form_for([@goal, activity]) do |f| %>
+  <%= form_for([goal, activity]) do |f| %>
     <td><%= f.check_box :status, class: "toggle" %></td>
     <td><%=f.label :description, activity.description %></td>
   <% end %>
@@ -12,27 +12,7 @@
   <td class="earliest-due-date"><%= activity.upcoming_due_dates.first.strftime("%B %d, %Y")%></td>
   <td><button class="destroy"></button></td>
       </tr>
-    <tr class="activity-li-attributes">
-     <!--  <td><%#= activity.period %></td>
-      <td><%#= activity.facilitator %></td>
-      <td><%#= activity.barrier %></td> -->
-      <td><%#= #activity.cheer %></td>
-      <td><%#=link_to "Edit Activity", edit_goal_activity_path(activity) %></td>
-    </tr>
 <div id="edit-activity" class="hidden"><%= render "form" %></div>
-  </div>
 
-    <!-- <%#= form_for([@goal, activity], html: {class: "update"}) do |f| %>
-      <%#= f.text_field :description, class: "edit" %>
-      <div id="additional-fields" class="hidden">
-        <tr class="activity-attributes">
-           <td><%#= f.select :frequency, options_for_select((1..12)), class: "edit" %></td>
-          <td><%#= f.select :period, options_for_select(["day", "week", "month", "year"]), class: "edit" %></td>
-          <td><%#= f.text_field :facilitator, class: "edit" %></td>
-          <td><%#= f.text_field :barrier, class: "edit" %></td>
-
-        </tr>
-      </div>
-    <%#= f.submit %>
-    <% end %>
-<%# end %> -->
+<% end %>
+   
